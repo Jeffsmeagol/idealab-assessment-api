@@ -16,6 +16,11 @@ app.use(morgan("dev"));
 // Routes
 app.use("/tasks", tasksRouter);
 
+// Health check endpoint for Render
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 // 404 handler for unmatched routes
 app.use((req: Request, _res: Response, next: NextFunction) => {
   const err = new Error(`Route not found: ${req.method} ${req.path}`);

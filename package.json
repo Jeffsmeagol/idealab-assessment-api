@@ -9,12 +9,11 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:studio": "prisma studio",
+    "prisma:db-push": "prisma db push",
     "prisma:db-reset": "prisma db reset",
-    "prisma:seed": "ts-node-dev --respawn --transpile-only src/seed.ts",
-    "migrate:prod": "bash migrate.sh",
-    "postbuild": "npm run prisma:generate && npm run prisma:migrate",
-    "health": "curl -f http://localhost:${PORT:-3000}/health || exit 1"
+    "prisma:seed": "ts-node-dev --respawn --transpile-only src/seed.ts"
   },
   "keywords": [],
   "author": "",
